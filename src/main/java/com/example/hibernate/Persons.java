@@ -1,18 +1,28 @@
 package com.example.hibernate;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.EmbeddedId;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.Min;
 import lombok.Builder;
 
 @Entity
-@Table
+@Table(name = "persons")
 @Builder
 public class Persons {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
 
-    @EmbeddedId
-    private Contact contact;
+    @Column(nullable = false)
+    private String name;
+
+    @Column(nullable = false)
+    private String surname;
+
+    @Column(nullable = false)
+    @Min(value = 0, message = "Не может быть отрицательным")
+    @Max(value = 120, message = "Редко кто доживает")
+    private int age;
 
     @Column(nullable = false)
     private String city;
@@ -20,12 +30,18 @@ public class Persons {
     @Column(nullable = false)
     private String phoneNumber;
 
+
     public Persons() {
     }
 
-    public Persons(Contact contact, String city, String phoneNumber) {
-        this.contact = contact;
+    public Persons(Integer id, String name, String surname, int age, String city, String phoneNumber) {
+        this.id = id;
+        this.name = name;
+        this.surname = surname;
+        this.age = age;
         this.city = city;
         this.phoneNumber = phoneNumber;
     }
 }
+
+
