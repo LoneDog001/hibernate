@@ -1,6 +1,6 @@
 package com.example.hibernate.controller;
 
-import com.example.hibernate.Persons;
+import com.example.hibernate.model.Persons;
 import com.example.hibernate.repository.MyRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;

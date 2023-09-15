@@ -1,6 +1,6 @@
 package com.example.hibernate.repository;
 
-import com.example.hibernate.Persons;
+import com.example.hibernate.model.Persons;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
